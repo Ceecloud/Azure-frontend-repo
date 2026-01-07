@@ -1,32 +1,70 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: bank-ingress
+# spec:
+#   ingressClassName: nginx
+#   tls:
+#   - hosts:
+#     - bank.ceecloudtech.online
+#     - bankapi.ceecloudtech.online
+#     secretName: bank-tls-secret
+#   rules:
+#   - host: bank.ceecloudtech.online
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: bank-frontend-service
+#             port:
+#               number: 3000
+#   - host: bankapi.ceecloudtech.online
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: bank-backend-service
+#             port:
+#               number: 8080
+
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bank-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   tls:
-  - hosts:
-    - bank.ceecloudtech.online
-    - bankapi.ceecloudtech.online
-    secretName: bank-tls-secret
+    - hosts:
+        - bank.ceecloudtech.online
+        - bankapi.ceecloudtech.online
+      secretName: bank-tls-secret
   rules:
-  - host: bank.ceecloudtech.online
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: bank-frontend-service
-            port:
-              number: 3000
-  - host: bankapi.ceecloudtech.online
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: bank-backend-service
-            port:
-              number: 8080
+    - host: bank.ceecloudtech.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bank-frontend-service
+                port:
+                  number: 3000
+    - host: bankapi.ceecloudtech.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bank-backend-service
+                port:
+                  number: 8080
