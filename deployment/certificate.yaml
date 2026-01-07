@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: bank-cert
+spec:
+  secretName: bank-tls-secret
+  issuerRef:
+    name: http-01-production   # ← MUST match existing ClusterIssuer
+    kind: ClusterIssuer
+  dnsNames:
+  - bank.ceecloudtech.online
+  - bankapi.ceecloudtech.online

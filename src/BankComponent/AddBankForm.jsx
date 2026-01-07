@@ -13,7 +13,7 @@ const AddBankForm = () => {
   const retrieveAllBankUsers = async () => {
     try {
       const response = await axios.get(
-        "https://bankapi.podonecohort4.online/api/user/fetch/bank/managers",
+        "https://bankapi.ceecloudtech.online/api/user/fetch/bank/managers",
         {
           headers: {
             Authorization: "Bearer " + admin_jwtToken, // Replace with your actual JWT token
@@ -56,7 +56,7 @@ const AddBankForm = () => {
   };
 
   const saveBank = (e) => {
-    fetch("https://bankapi.podonecohort4.online/api/bank/register", {
+    fetch("https://bankapi.ceecloudtech.online/api/bank/register", {
       method: "POST",
       headers: {
         Accept: "application/json",

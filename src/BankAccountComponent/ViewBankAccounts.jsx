@@ -23,7 +23,7 @@ const ViewBankAccounts = () => {
 
   const retrieveAllAccounts = async () => {
     const response = await axios.get(
-      "https://bankapi.podonecohort4.online/api/bank/account/fetch/bankwise?bankId=" +
+      "https://bankapi.ceecloudtech.online/api/bank/account/fetch/bankwise?bankId=" +
         bank.bank.id,
       {
         headers: {
@@ -37,7 +37,7 @@ const ViewBankAccounts = () => {
 
   const retrieveAllAccountsByBankAccount = async () => {
     const response = await axios.get(
-      "https://bankapi.podonecohort4.online/api/bank/account/search?bankId=" +
+      "https://bankapi.ceecloudtech.online/api/bank/account/search?bankId=" +
         bank.bank.id +
         "&accountNumber=" +
         accountNumber,
@@ -89,7 +89,7 @@ const ViewBankAccounts = () => {
     updateBankAccountStatusRequest.accountId = accountId;
     updateBankAccountStatusRequest.status = "Open";
 
-    fetch("https://bankapi.podonecohort4.online/api/bank/account/update/status", {
+    fetch("https://bankapi.ceecloudtech.online/api/bank/account/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -157,7 +157,7 @@ const ViewBankAccounts = () => {
     updateBankAccountStatusRequest.accountId = accountId;
     updateBankAccountStatusRequest.status = "Lock";
 
-    fetch("https://bankapi.podonecohort4.online/api/bank/account/update/status", {
+    fetch("https://bankapi.ceecloudtech.online/api/bank/account/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",
