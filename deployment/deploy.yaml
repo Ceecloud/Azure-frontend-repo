@@ -1,9 +1,41 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: frontend-banking-deployment
+# spec:
+#   replicas: 1 
+#   selector:
+#     matchLabels:
+#       app: frontend-banking-deployment
+#   template:
+#     metadata:
+#       labels:
+#         app: frontend-banking-deployment
+#     spec:
+#       containers:
+#       - name: frontend-banking-container
+#         image: ceecloudacr.azurecr.io/bank-frontend:4
+
+#         ports:
+#         - containerPort: 3000
+#         env:
+#           - name: HOST
+#             value: "0.0.0.0"
+#           - name: PORT
+#             value: "3000"
+#           - name: REACT_APP_API_URL
+#             valueFrom:
+#             configMapKeyRef:
+#               name: bank-config
+#               key: REACT_APP_API_URL
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-banking-deployment
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: frontend-banking-deployment
@@ -14,11 +46,14 @@ spec:
     spec:
       containers:
       - name: frontend-banking-container
-        image: ceecloudacr.azurecr.io/bank-frontend:7
-
+        image: ceecloudacr.azurecr.io/bank-frontend:4
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         env:
+        - name: HOST
+          value: "0.0.0.0"
+        - name: PORT
+          value: "3000"
         - name: REACT_APP_API_URL
           valueFrom:
             configMapKeyRef:
