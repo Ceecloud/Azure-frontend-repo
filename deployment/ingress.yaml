@@ -91,7 +91,7 @@ spec:
           service:
             name: bank-frontend-service
             port:
-              number: 3000
+              number: 80
   - host: bankapi.ceecloudtech.online
     http:
       paths:
